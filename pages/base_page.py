@@ -21,6 +21,10 @@ class BasePage:
         return WebDriverWait(self.driver, timeout) \
             .until(EC.presence_of_all_elements_located(locator), message=f"Can't find element by locator {locator}")
 
+    # GETTERS
+    def get_basket_icon_count_value(self):
+        return int(self.find_element(BasePageLocators.BASKET_ICON_COUNT).text)
+
     # ACTIONS
     @allure.step('Click Logo')
     def click_logo(self):
