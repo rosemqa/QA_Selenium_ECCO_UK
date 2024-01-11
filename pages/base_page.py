@@ -1,4 +1,6 @@
 import allure
+from selenium.common import TimeoutException
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import BasePageLocators
@@ -11,7 +13,7 @@ class BasePage:
 
     def open_page(self):
         self.driver.get(self.url)
-        self.accept_necessary_cookies()
+        self.accept_all_cookies()
 
     def find_element(self, locator, timeout=10):
         return WebDriverWait(self.driver, timeout) \
@@ -21,9 +23,26 @@ class BasePage:
         return WebDriverWait(self.driver, timeout) \
             .until(EC.presence_of_all_elements_located(locator), message=f"Can't find element by locator {locator}")
 
+    def is_element_present(self, locator, timeout=10):
+        try:
+            WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
+        except TimeoutException:
+            return False
+        return True
+
+    def is_disappeared(self, locator, timeout=1):
+        try:
+            WebDriverWait(self.driver, timeout).until_not(EC.visibility_of_element_located(locator))
+        except TimeoutException:
+            return False
+        return True
+
     # GETTERS
     def get_basket_icon_count_value(self):
         return int(self.find_element(BasePageLocators.BASKET_ICON_COUNT).text)
+
+    def get_favorites_icon_count_value(self):
+        return int(self.find_element(BasePageLocators.FAVOURITES_ICON_COUNT).text)
 
     # ACTIONS
     @allure.step('Click Logo')
@@ -32,8 +51,8 @@ class BasePage:
         print('Click Logo')
 
     @allure.step('Accept cookies')
-    def accept_necessary_cookies(self):
-        self.find_element(BasePageLocators.ACCEPT_NECESSARY_COOKIES_BTN).click()
+    def accept_all_cookies(self):
+        self.find_element(BasePageLocators.ACCEPT_ALL_COOKIES_BTN).click()
         print('Accept cookies')
 
     @allure.step('Click Profile icon')
@@ -65,5 +84,3 @@ class BasePage:
     def click_back_to_top_button(self):
         self.find_element(BasePageLocators.BACK_TO_TOP_BTN).click()
         print('Click Back To Top button')
-
-
