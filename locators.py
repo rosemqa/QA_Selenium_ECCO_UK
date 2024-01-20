@@ -11,7 +11,6 @@ class BasePageLocators:
     BASKET_ICON = (By.CSS_SELECTOR, '#basket_icon')
     BASKET_ICON_COUNT = (By.CSS_SELECTOR, 'span.basket__items-count')
     SEARCH_ICON = (By.CSS_SELECTOR, '.search-icon')
-    BACK_TO_TOP_BTN = (By.CSS_SELECTOR, '.scroll-to-top')
 
 
 class ProductPageLocators:
@@ -39,3 +38,30 @@ class ProductPageLocators:
     MINI_BASKET_PRODUCT_PRICE = (By.CSS_SELECTOR, '.basket_overlay__wrapper--visible .price')
     MINI_BASKET_TOTAL = (By.CSS_SELECTOR, '.basket_overlay__wrapper--visible .summary_total .summary_price')
     MINI_BASKET_NUMBER_OF_ITEMS = (By.CSS_SELECTOR, '.basket_overlay__wrapper--visible .summary_num-of-items')
+
+
+class PLPLocators:
+    FILTERS_ITEMS_COUNT = (By.CSS_SELECTOR, '.count-indicator')
+    FILTERS_COLOR = (By.CSS_SELECTOR, '#dominantcolor')
+    FILTERS_COLOR_NAME = (By.CSS_SELECTOR, '#dominantcolor .custom_selectbox__list-item-checkbox')
+    FILTERS_COLOR_AMOUNT = (By.CSS_SELECTOR, '#dominantcolor .amount')
+    FILTERS_PRICE = (By.CSS_SELECTOR, '.filter-btn #adjustedprice')
+    SELECTED_FILTER = (By.CSS_SELECTOR, '.selected-filter')
+    SORT_BY_DROPDOWN = (By.CSS_SELECTOR, '.filters-sorting__container')
+    SORT_BY_PRICE_ASC = (By.XPATH, '//*[.="Lowest price"]/..')
+    SORT_BY_PRICE_DESC = (By.XPATH, '//*[.="Highest price"]/..')
+    PRICE_SLIDER_MIN = (By.CSS_SELECTOR, '.handle-left')
+    PRICE_SLIDER_MAX = (By.CSS_SELECTOR, '.handle-right')
+    PRICE_RANGE_MIN = (By.CSS_SELECTOR, '.rangeslider__value--min')
+    PRICE_RANGE_MAX = (By.CSS_SELECTOR, '.rangeslider__value--max')
+    CLEAR_ALL_BTN = (By.CSS_SELECTOR, '.selected-filter.clear-filters-btn')
+    PRODUCT_PRICE = (By.CSS_SELECTOR, '.meta__price')
+    PRODUCT_TITLE = (By.CSS_SELECTOR, '.meta__title')
+    ADD_TO_FAVORITE_ICON = (By.CSS_SELECTOR, '#favorite-fill')
+    BACK_TO_TOP_BTN = (By.CSS_SELECTOR, '.scroll-to-top')
+
+
+
+
+
+

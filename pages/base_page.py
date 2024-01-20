@@ -80,7 +80,3 @@ class BasePage:
         self.find_element(BasePageLocators.SEARCH_ICON).click()
         print('Click Search  icon')
 
-    @allure.step('Click Back To Top button')
-    def click_back_to_top_button(self):
-        self.find_element(BasePageLocators.BACK_TO_TOP_BTN).click()
-        print('Click Back To Top button')
