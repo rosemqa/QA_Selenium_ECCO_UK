@@ -21,7 +21,7 @@ def test_sorting_by_price(driver):
 
 
 @allure.description(
-    'Test that product total and color name in selected filter are correct after applying thr color filter'
+    'Test that product total and color name in selected filter are correct after applying the color filter'
 )
 def test_apply_color_filter(driver):
     page = PLP(driver, URL.PLP)
@@ -45,8 +45,8 @@ def test_clear_all_button(driver):
     page = PLP(driver, URL.PLP)
     page.open_page()
 
-    page.click_color_filter()
     unfiltered_products_count = page.get_total_products_value()
+    page.click_color_filter()
     page.select_color()
     filtered_products_count = page.get_total_products_value()
 
