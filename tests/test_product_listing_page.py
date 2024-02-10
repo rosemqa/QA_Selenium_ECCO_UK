@@ -69,3 +69,53 @@ def test_back_to_top_button(driver):
     page.click_back_to_top_button()
     page.assert_back_to_top_button_disappears()
     page.assert_page_scrolled_to_top()
+
+
+@allure.description('Test price slider changes the min and max price')
+def test_price_slider(driver):
+    page = PLP(driver, URL.PLP)
+    page.open_page()
+    page.click_price_filter()
+
+    min_price_by_default = page.get_min_price_value_in_price_range()
+    max_price_by_default = page.get_max_price_value_in_price_range()
+
+    page.set_min_price()
+    page.set_max_price()
+
+    min_price = page.get_min_price_value_in_price_range()
+    max_price = page.get_max_price_value_in_price_range()
+
+    assert min_price_by_default < min_price, \
+        'Price range is not changed after moving the min price slider'
+    assert max_price_by_default > max_price, \
+        'Price range is not changed after moving the max price slider'
+
+
+@allure.description('Test that filtering by min and max price is correct')
+def test_price_filter(driver):
+    page = PLP(driver, URL.PLP)
+    page.open_page()
+
+    page.click_price_filter()
+    page.set_min_price()
+    page.set_max_price()
+
+    min_price = page.get_min_price_value_in_price_range()
+    max_price = page.get_max_price_value_in_price_range()
+
+    page.click_sort_by()
+    page.click_sort_by_price_asc()
+
+    first_product_price = page.get_first_product_price()
+
+    assert first_product_price >= min_price, \
+        'The min price on PLP does not match the min price filter'
+
+    page.click_sort_by()
+    page.click_sort_by_price_desc()
+
+    first_product_price = page.get_first_product_price()
+
+    assert first_product_price <= max_price, \
+        'The max price on PLP does not match the max price filter'
