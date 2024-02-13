@@ -13,6 +13,30 @@ class BasePageLocators:
     SEARCH_ICON = (By.CSS_SELECTOR, '.search-icon')
 
 
+class RegistrationPageLocators:
+    FIRST_NAME_FIELD = (By.CSS_SELECTOR, '#FirstName')
+    LAST_NAME_FIELD = (By.CSS_SELECTOR, '#LastName')
+    EMAIL_FIELD = (By.CSS_SELECTOR, '#Email')
+    PASSWORD_FIELD = (By.CSS_SELECTOR, '#Password')
+    CONFIRM_PASSWORD_FIELD = (By.CSS_SELECTOR, '#ConfirmPassword')
+    GENDER_FEMALE = (By.CSS_SELECTOR, '[for="GenderFemale"]')
+    GENDER_MALE = (By.CSS_SELECTOR, '[for="GenderMale"]')
+    ACCEPT_TERMS = (By.CSS_SELECTOR, '[for="AcceptConsent"]')
+    ACCEPT_TERMS_LINK = (By.CSS_SELECTOR, '[for="AcceptConsent"] a')
+    CREATE_ACCOUNT_BTN = (By.CSS_SELECTOR, '.ecco_button__center')
+    FIRST_NAME_ERROR = (By.CSS_SELECTOR, '#FirstName-error')
+    LAST_NAME_ERROR = (By.CSS_SELECTOR, '#LastName-error')
+    EMAIL_ERROR = (By.CSS_SELECTOR, '#Email-error')
+    PASSWORD_ERROR = (By.CSS_SELECTOR, '#Password-error')
+    CONFIRM_PASSWORD_ERROR = (By.CSS_SELECTOR, '#ConfirmPassword-error')
+    ACCEPT_TERMS_ERROR = (By.CSS_SELECTOR, '#AcceptConsent-error')
+    TERMS_WINDOW_ELEMENT = (By.CSS_SELECTOR, '.signup-consent-dialog')
+
+
+class AccountPageLocators:
+    GREETING_TITLE = (By.CSS_SELECTOR, '.myecco-overview-greeting>.heading')
+
+
 class ProductPageLocators:
     ADD_TO_BASKET_BTN = (By.CSS_SELECTOR, '.product_info__buttons-primary')
     CLICK_AND_COLLECT_BTN = (By.CSS_SELECTOR, '.product_info__buttons-secondary')
@@ -59,9 +83,3 @@ class PLPLocators:
     PRODUCT_TITLE = (By.CSS_SELECTOR, '.meta__title')
     ADD_TO_FAVORITE_ICON = (By.CSS_SELECTOR, '#favorite-fill')
     BACK_TO_TOP_BTN = (By.CSS_SELECTOR, '.scroll-to-top')
-
-
-
-
-
-
