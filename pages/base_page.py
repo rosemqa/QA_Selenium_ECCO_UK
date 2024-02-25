@@ -1,3 +1,4 @@
+import time
 import allure
 from selenium.common import TimeoutException
 from selenium.webdriver import ActionChains, Keys
@@ -30,12 +31,23 @@ class BasePage:
             return False
         return True
 
+    def is_not_element_present(self, locator, timeout=5):
+        try:
+            WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
+        except TimeoutException:
+            return True
+        return False
+
     def is_disappeared(self, locator, timeout=1):
         try:
             WebDriverWait(self.driver, timeout).until_not(EC.visibility_of_element_located(locator))
         except TimeoutException:
             return False
         return True
+
+    def get_current_url(self):
+        time.sleep(1)
+        return self.driver.current_url
 
     # GETTERS
     def get_basket_icon_count_value(self):
@@ -79,4 +91,3 @@ class BasePage:
     def click_search_icon(self):
         self.find_element(BasePageLocators.SEARCH_ICON).click()
         print('Click Search  icon')
-

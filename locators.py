@@ -33,6 +33,19 @@ class RegistrationPageLocators:
     TERMS_WINDOW_ELEMENT = (By.CSS_SELECTOR, '.signup-consent-dialog')
 
 
+class LoginPageLocators:
+    EMAIL_FIELD = (By.CSS_SELECTOR, '#Email')
+    PASSWORD_FIELD = (By.CSS_SELECTOR, '#Password')
+    SHOW_PASSWORD_BTN = (By.CSS_SELECTOR, '.showpass')
+    HIDE_PASSWORD_BTN = (By.CSS_SELECTOR, '.hidepass')
+    FORGOT_PASSWORD_LINK = (By.CSS_SELECTOR, '.forgot-password')
+    SIGN_IN_BTN = (By.CSS_SELECTOR, '.myecco-auth-box-btn-container>[type="submit"]')
+    CREATE_ACCOUNT_BTN = (By.CSS_SELECTOR, '#createCustomerArea a')
+    EMAIL_ERROR = (By.CSS_SELECTOR, '#Email-error')
+    PASSWORD_ERROR = (By.CSS_SELECTOR, '#Password-error')
+    LOGIN_ERROR = (By.CSS_SELECTOR, '[data-valmsg-for="Invalid Login"]')
+
+
 class AccountPageLocators:
     GREETING_TITLE = (By.CSS_SELECTOR, '.myecco-overview-greeting>.heading')
 
