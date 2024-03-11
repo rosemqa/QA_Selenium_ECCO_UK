@@ -75,3 +75,9 @@ class LoginPage(BasePage):
         assert self.find_element(LoginPageLocators.PASSWORD_FIELD).get_attribute('type') == "password", \
             'Password is not masked'
         print('Password is hidden')
+
+    @allure.step('Assert the "Sign in now" button is present')
+    def assert_sign_in_btn_is_present(self):
+        assert self.is_element_present(LoginPageLocators.SIGN_IN_BTN), \
+            'Sign in button is missing'
+        print('Sign in button is present')

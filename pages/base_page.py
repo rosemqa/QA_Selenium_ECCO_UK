@@ -14,7 +14,8 @@ class BasePage:
 
     def open_page(self):
         self.driver.get(self.url)
-        self.accept_all_cookies()
+        if self.is_element_present(BasePageLocators.ACCEPT_ALL_COOKIES_BTN, timeout=1):
+            self.accept_all_cookies()
 
     def find_element(self, locator, timeout=10):
         return WebDriverWait(self.driver, timeout) \
@@ -57,6 +58,12 @@ class BasePage:
         return int(self.find_element(BasePageLocators.FAVOURITES_ICON_COUNT).text)
 
     # ACTIONS
+    @allure.step('Refresh the page')
+    def refresh_page(self):
+        time.sleep(1)
+        self.driver.refresh()
+        print('Refresh the page')
+
     @allure.step('Click Logo')
     def click_logo(self):
         self.find_element(BasePageLocators.LOGO).click()
@@ -91,3 +98,12 @@ class BasePage:
     def click_search_icon(self):
         self.find_element(BasePageLocators.SEARCH_ICON).click()
         print('Click Search  icon')
+
+    # ASSERTIONS
+    @allure.step('Assert the favourites icon count appears when adding a product to Favourites from PDP')
+    def assert_favourites_icon_count_present(self):
+        assert self.is_element_present(BasePageLocators.FAVOURITES_ICON_COUNT), \
+            'Favourites icon count is missing'
+        print('Favourites icon count is present')
+
+

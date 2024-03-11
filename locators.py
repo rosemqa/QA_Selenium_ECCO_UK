@@ -48,6 +48,50 @@ class LoginPageLocators:
 
 class AccountPageLocators:
     GREETING_TITLE = (By.CSS_SELECTOR, '.myecco-overview-greeting>.heading')
+    SEE_DETAILS_LINK = (By.XPATH, '//*[.="See details"]')
+    SEE_ORDERS_LINK = (By.XPATH, '//*[.="See orders"]')
+    GO_TO_MY_FAVORITES_LINK = (By.XPATH, '//*[.="Go to my favorites"]')
+    SEE_SUBSCRIPTIONS_LINK = (By.XPATH, '//*[.="See subscriptions"]')
+    SELECT_MY_STORE_LINK = (By.XPATH, '// *[. = "SELECT MY STORE"]')
+    SIGH_OUT_BTN = (By.CSS_SELECTOR, '.login-signup .logoff__button')
+    # SIDE MENU LINKS
+    TO_MY_ECCO_LINK = (By.CSS_SELECTOR, '.goback-link')
+    MY_PERSONAL_DETAILS_LINK = (By.CSS_SELECTOR, '//a[.="My Personal Details"]')
+    MY_ORDERS_LINK = (By.XPATH, '//a[.="My Orders"]')
+    MY_FAVOURITES_LINK = (By.XPATH, '//a[.="MY FAVOURITES"]')
+    MY_SUBSCRIPTIONS_LINK = (By.XPATH, '//a[.="MY SUBSCRIPTIONS"]')
+    # PERSONAL DETAILS PAGE
+    USER_NAME = (By.CSS_SELECTOR, '#AccountDetailsID>p:nth-child(2)')
+    # EDIT PAGE
+    FIRST_NAME_FIELD = (By.CSS_SELECTOR, '#FirstName')
+    LAST_NAME_FIELD = (By.CSS_SELECTOR, '#LastName')
+    EMAIL_FIELD = (By.CSS_SELECTOR, '#Email')
+    PHONE_NUMBER_FIELD = (By.CSS_SELECTOR, '#PhoneNumber')
+    DAY_PICKER = (By.CSS_SELECTOR, '#myecco-profile-date-picker__date')
+    MONTH_PICKER = (By.CSS_SELECTOR, '#myecco-profile-date-picker__month')
+    YEAR_PICKER = (By.CSS_SELECTOR, '#myecco-profile-date-picker__year')
+    YEAR_PICKER_CLOSE_ICON = (By.CSS_SELECTOR, '#myecco-profile-date-picker__close-icon')
+    DAY_TO_CHOOSE = (By.CSS_SELECTOR, '.day')
+    MONTH_TO_CHOOSE = (By.CSS_SELECTOR, '.month')
+    YEAR_TO_CHOOSE = (By.CSS_SELECTOR, '.year')
+    YEAR_TO_CHOOSE_SELECTED = (By.CSS_SELECTOR, '.year.selected')
+    CLEAR_DATE_LINK = (By.CSS_SELECTOR, '.label-input-group .underlined-link.date-picker__clear-all-btn')
+    SAVE_USER_DETAILS_BTN = (By.CSS_SELECTOR, '.ecco_button__center .ecco_button--fullwidth')
+    FIRST_NAME_ERROR = (By.CSS_SELECTOR, '#FirstName-error')
+    LAST_NAME_ERROR = (By.CSS_SELECTOR, '#LastName-error')
+    EMAIL_ERROR = (By.CSS_SELECTOR, '#Email-error')
+    PHONE_NUMBER_ERROR = (By.CSS_SELECTOR, '#PhoneNumber-error')
+    UPDATED_USER_INFO_TEXT = (By.CSS_SELECTOR, '#form0 .info-text')
+    # FAVOURITE PAGE
+    MY_FAVOURITES_TITLE = (By.CSS_SELECTOR, '.heading--h1')
+    PRODUCT_NAME = (By.CSS_SELECTOR, '.product_name')
+    PRODUCT_PRICE = (By.CSS_SELECTOR, '.price')
+    PRODUCT_COLOR = (By.CSS_SELECTOR, '.product_color')
+    DELETE_FAVOURITE_BTN = (By.CSS_SELECTOR, '[data-title="Delete favourite"]')
+    DELETE_FAVOURITE_OK_BUTTON = (By.CSS_SELECTOR, '.modal__ok')
+    SHARE_FAVOURITES_BTN = (By.CSS_SELECTOR, '.accordion__title')
+    EMPTY_FAVORITES_MSG = (By.CSS_SELECTOR, '.myecco-favourite__messages')
+
 
 
 class ProductPageLocators:

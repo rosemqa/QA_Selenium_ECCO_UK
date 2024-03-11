@@ -51,7 +51,7 @@ def test_login_with_empty_password(driver):
 
 
 @allure.suite('Login')
-@allure.description('Test login with_incorrect email format')
+@allure.description('Test login with incorrect email format')
 @allure.tag('negative')
 def test_login_with_incorrect_email_format(driver):
     email = 'www_mail.com'
