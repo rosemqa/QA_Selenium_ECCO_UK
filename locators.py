@@ -91,7 +91,8 @@ class AccountPageLocators:
     DELETE_FAVOURITE_OK_BUTTON = (By.CSS_SELECTOR, '.modal__ok')
     SHARE_FAVOURITES_BTN = (By.CSS_SELECTOR, '.accordion__title')
     EMPTY_FAVORITES_MSG = (By.CSS_SELECTOR, '.myecco-favourite__messages')
-
+    SIGN_IN_BTN = (By.XPATH, '//*[.="Sign in now"]')
+    COPY_LINK_FIELD = (By.CSS_SELECTOR, 'input#copylink')
 
 
 class ProductPageLocators:

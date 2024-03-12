@@ -64,6 +64,11 @@ class BasePage:
         self.driver.refresh()
         print('Refresh the page')
 
+    @allure.step('Open link')
+    def open_link(self, link):
+        self.driver.get(link)
+        print(f'Open link {link}')
+
     @allure.step('Click Logo')
     def click_logo(self):
         self.find_element(BasePageLocators.LOGO).click()
@@ -106,4 +111,8 @@ class BasePage:
             'Favourites icon count is missing'
         print('Favourites icon count is present')
 
-
+    @allure.step('Assert favourites icon count disappears after removing a product from Favourites')
+    def assert_favourites_icon_count_is_missing(self):
+        assert self.is_not_element_present(BasePageLocators.FAVOURITES_ICON_COUNT, timeout=1), \
+            'Favourites icon count is present after removing a product from Favourites'
+        print('Favourites icon count is missing')

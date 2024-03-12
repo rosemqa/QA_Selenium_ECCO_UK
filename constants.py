@@ -52,3 +52,4 @@ class AccountAlerts:
     EMPTY_FAVORITES_MESSAGE = 'You have not selected any favourites yet'
     MY_FAVOURITES_TITLE_TEXT = 'My Favourites'
     GUEST_FAVOURITES_TITLE_TEXT = 'Guest Favourites'
+    SEE_MY_FAVOURITES_TITLE_TEXT = 'See My Favourites'

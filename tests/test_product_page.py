@@ -79,7 +79,7 @@ def test_image_changes_when_different_color_selected(driver):
 
 @allure.description(
     'Test that Favorites count value is correct and Add to favorites tooltip appears/disappears when adding a product '
-    'to favorites'
+    'to favorites as a guest'
 )
 def test_add_to_favorites(driver):
     page = ProductPage(driver, URL.PRODUCT_PAGE)
@@ -87,6 +87,7 @@ def test_add_to_favorites(driver):
 
     page.click_add_to_favorites_button()
 
+    page.assert_favourites_icon_count_present()
     favorites_count_value = page.get_favorites_icon_count_value()
 
     page.assert_add_to_favorites_tooltip_appears()

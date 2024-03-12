@@ -1,6 +1,6 @@
 import random
 import allure
-from locators import AccountPageLocators, BasePageLocators
+from locators import AccountPageLocators
 from .base_page import BasePage
 
 
@@ -79,6 +79,10 @@ class AccountPage(BasePage):
 
     def get_empty_favourites_message_text(self):
         return self.find_element(AccountPageLocators.EMPTY_FAVORITES_MSG).text
+
+    def get_share_link_text(self):
+        """Get share link value on the favourites page"""
+        return self.find_element(AccountPageLocators.COPY_LINK_FIELD).get_attribute('value')
 
     # ACTIONS
     @allure.step('Click See Details link')
@@ -229,6 +233,16 @@ class AccountPage(BasePage):
         self.find_element(AccountPageLocators.DELETE_FAVOURITE_OK_BUTTON).click()
         print('Confirm deletion in the modal')
 
+    @allure.step('Click "Share you favourites" button')
+    def click_share_favourites_button(self):
+        self.find_element(AccountPageLocators.SHARE_FAVOURITES_BTN).click()
+        print('Click "Share you favourites" button')
+
+    @allure.description('Click the product title in Favourites')
+    def click_favourite_product_name(self):
+        self.find_element(AccountPageLocators.PRODUCT_NAME).click()
+        print('Click favourite product name')
+
     # ASSERTIONS
     @allure.step('Assert the greeting title is present when logging in')
     def assert_greeting_title_is_present(self):
@@ -242,8 +256,8 @@ class AccountPage(BasePage):
             'Updated user info message does not disappear after 6 seconds'
         print('Updated user info message disappears')
 
-    @allure.step('Assert favourites icon count disappears after removing a product from Favourites')
-    def assert_favourites_icon_count_is_missing(self):
-        assert self.is_not_element_present(BasePageLocators.FAVOURITES_ICON_COUNT, timeout=1), \
-            'Favourites icon count is present after removing a product from Favourites'
-        print('Favourites icon count is missing')
+    @allure.step('Assert "Sign in now" button is present for a non-logged in user')
+    def assert_sign_in_button_is_present(self):
+        assert self.is_element_present(AccountPageLocators.SIGN_IN_BTN), \
+            'Sign In Now button is missing'
+        print('"Sign in now" button is present')

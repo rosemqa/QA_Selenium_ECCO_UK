@@ -1,8 +1,8 @@
+import time
 import allure
-from selenium.webdriver import ActionChains, Keys
-
+from selenium.webdriver import ActionChains
 from .base_page import BasePage
-from locators import ProductPageLocators, BasePageLocators
+from locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
@@ -64,6 +64,7 @@ class ProductPage(BasePage):
     @allure.step('Click Add to Favorites button')
     def click_add_to_favorites_button(self):
         self.find_element(ProductPageLocators.ADD_TO_FAVORITES_BTN).click()
+        time.sleep(1)
         print('Click Add to Favorites button')
 
     @allure.step('Move the mouse from Add to favorites button to the right')
