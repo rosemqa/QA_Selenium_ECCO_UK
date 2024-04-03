@@ -7,6 +7,9 @@ class URL:
     LOGIN_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/Login'
     EDIT_USER_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/Edit'
     MY_FAVOURITES_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/My-Favourites'
+    EDIT_BILLING_ADDRESS_PAGE = \
+        'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/AddressBook/Address?type=BillingAddress'
+    BILLING_ADDRESS_BOOK_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/AddressBook?type=BillingAddress'
 
 
 class AuthData:
@@ -44,6 +47,7 @@ class AccountAlerts:
     EDIT_INCORRECT_PHONE_NUMBER_LENGTH_ALERT = 'The phone must contain a minimum of 7 and a maximum of 11 digits'
     ADDRESS_EMPTY_FIRSTNAME_ALERT = 'First name is a required field'
     ADDRESS_EMPTY_LASTNAME_ALERT = 'Last name is a required field'
+    NO_BILLING_ADDRESS_MESSAGE = 'No billing address specified'
     ADDRESS_EMPTY_STREET_ALERT = 'Street is a required field'
     ADDRESS_EMPTY_NUMBER_ALERT = 'Number is a required field'
     ADDRESS_EMPTY_CODE_ALERT = 'Zip code is a required field'

@@ -1,11 +1,12 @@
 import random
 import allure
+from constants import AccountAlerts
 from locators import AccountPageLocators
 from .base_page import BasePage
+from pytest_check import check
 
 
 class AccountPage(BasePage):
-
     # GETTERS
     def get_greeting_title_text(self):
         return self.find_element(AccountPageLocators.GREETING_TITLE).text
@@ -83,6 +84,47 @@ class AccountPage(BasePage):
     def get_share_link_text(self):
         """Get share link value on the favourites page"""
         return self.find_element(AccountPageLocators.COPY_LINK_FIELD).get_attribute('value')
+
+    def get_address_book_street_text(self):
+        """Get the street name value and house number on the address book page"""
+        return self.find_element(AccountPageLocators.ADDRESS_BOOK_STREET).text
+
+    def get_address_book_city_text(self):
+        """Get the post code value and city name on the address book page"""
+        return self.find_element(AccountPageLocators.ADDRESS_BOOK_CITY).text
+
+    def get_address_book_no_address_text(self):
+        """Get a message text saying the address is not specified"""
+        return self.find_element(AccountPageLocators.NO_ADDRESS_MSG).text
+
+    def get_street_alert_text(self):
+        return self.find_element(AccountPageLocators.STREET_ERROR).text
+
+    def get_house_number_alert_text(self):
+        return self.find_element(AccountPageLocators.HOUSE_NUMBER_ERROR).text
+
+    def get_post_code_error_text(self):
+        return self.find_element(AccountPageLocators.POST_CODE_ERROR).text
+
+    def get_city_error_text(self):
+        return self.find_element(AccountPageLocators.CITY_ERROR).text
+
+    def get_css_street_field_border_color_value(self):
+        """Get css value for the border color of the street field"""
+        return self.find_element(AccountPageLocators.BILLING_ADDRESS_STREET_FIELD).value_of_css_property('border-color')
+
+    def get_css_number_field_border_color_value(self):
+        """Get css value for the border color of the house number field"""
+        return self.find_element(AccountPageLocators.BILLING_ADDRESS_NUMBER_FIELD).value_of_css_property('border-color')
+
+    def get_css_postal_code_field_border_color_value(self):
+        """Get css value for the border color of the postal code field"""
+        return self.find_element(AccountPageLocators.BILLING_ADDRESS_POST_CODE_FIELD) \
+            .value_of_css_property('border-color')
+
+    def get_css_city_field_border_color_value(self):
+        """Get css value for the border color of the city field"""
+        return self.find_element(AccountPageLocators.BILLING_ADDRESS_CITY_FIELD).value_of_css_property('border-color')
 
     # ACTIONS
     @allure.step('Click See Details link')
@@ -243,6 +285,71 @@ class AccountPage(BasePage):
         self.find_element(AccountPageLocators.PRODUCT_NAME).click()
         print('Click favourite product name')
 
+    @allure.step('Click Add Address button')
+    def click_add_address_button(self):
+        self.find_element(AccountPageLocators.ADD_ADDRESS_BTN).click()
+        print('Click Add Address button')
+
+    @allure.step('Click Edit Address link on the Address Book page')
+    def click_edit_address_link(self):
+        self.find_element(AccountPageLocators.EDIT_ADDRESS_LINK).click()
+        print('Click Edit Address link')
+
+    @allure.step('Click Delete button on the Address Book page')
+    def click_delete_address_button(self):
+        self.find_element(AccountPageLocators.DELETE_ADDRESS_BTN).click()
+        print('Click Delete address button')
+
+    @allure.step('Click OK button in the modal when deleting the address')
+    def confirm_address_deletion(self):
+        self.find_element(AccountPageLocators.DELETE_ADDRESS_OK_BUTTON).click()
+        print('Confirm address deletion')
+
+    @allure.step('Enter the billing address street')
+    def enter_billing_address_street(self, street):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_STREET_FIELD).send_keys(street)
+        print('Enter billing address street')
+
+    @allure.step('Enter the billing address house number')
+    def enter_billing_address_number(self, number):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_NUMBER_FIELD).send_keys(number)
+        print('Enter billing address house number')
+
+    @allure.step('Enter the billing address post code')
+    def enter_billing_address_post_code(self, post_code):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_POST_CODE_FIELD).send_keys(post_code)
+        print('Enter billing address post code')
+
+    @allure.step('Enter the billing address city')
+    def enter_billing_address_city(self, city):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_CITY_FIELD).send_keys(city)
+        print('Enter billing address city')
+
+    @allure.step('Click Save billing address button')
+    def click_save_billing_address_button(self):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_SAVE_BTN).click()
+        print('Click Save billing address button')
+
+    @allure.step('Clear the billing address Street field')
+    def clear_billing_address_street(self):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_STREET_FIELD).clear()
+        print('Clear the billing address Street field')
+
+    @allure.step('Clear the billing address Number field')
+    def clear_billing_address_house_number(self):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_NUMBER_FIELD).clear()
+        print('Clear the billing address Number field')
+
+    @allure.step('Clear the billing address Post Code field')
+    def clear_billing_address_post_code(self):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_POST_CODE_FIELD).clear()
+        print('Clear the billing address Post Code field')
+
+    @allure.step('Clear the billing address City field')
+    def clear_billing_address_city(self):
+        self.find_element(AccountPageLocators.BILLING_ADDRESS_CITY_FIELD).clear()
+        print('Clear the billing address City field')
+
     # ASSERTIONS
     @allure.step('Assert the greeting title is present when logging in')
     def assert_greeting_title_is_present(self):
@@ -261,3 +368,13 @@ class AccountPage(BasePage):
         assert self.is_element_present(AccountPageLocators.SIGN_IN_BTN), \
             'Sign In Now button is missing'
         print('"Sign in now" button is present')
+
+    def assert_no_billing_address(self):
+        with check:
+            assert self.is_element_present(AccountPageLocators.ADD_ADDRESS_BTN), \
+                'Add Address button is missing, probably the address is not deleted'
+        with check:
+            assert self.get_address_book_no_address_text() == AccountAlerts.NO_BILLING_ADDRESS_MESSAGE, \
+                f'No billing address message text is not correct,' \
+                f' expected: { AccountAlerts.NO_BILLING_ADDRESS_MESSAGE}, ' \
+                f'actual: {self.get_address_book_no_address_text()}'

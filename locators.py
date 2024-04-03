@@ -93,6 +93,26 @@ class AccountPageLocators:
     EMPTY_FAVORITES_MSG = (By.CSS_SELECTOR, '.myecco-favourite__messages')
     SIGN_IN_BTN = (By.XPATH, '//*[.="Sign in now"]')
     COPY_LINK_FIELD = (By.CSS_SELECTOR, 'input#copylink')
+    # EDIT BILLING ADDRESS PAGE
+    BILLING_ADDRESS_FIRST_NAME_FIELD = (By.CSS_SELECTOR, '#FirstName')
+    BILLING_ADDRESS_LAST_NAME_FIELD = (By.CSS_SELECTOR, '#LastName')
+    BILLING_ADDRESS_STREET_FIELD = (By.CSS_SELECTOR, '#Street')
+    BILLING_ADDRESS_NUMBER_FIELD = (By.CSS_SELECTOR, '#Number')
+    BILLING_ADDRESS_POST_CODE_FIELD = (By.CSS_SELECTOR, '#ZipCode')
+    BILLING_ADDRESS_CITY_FIELD = (By.CSS_SELECTOR, '#City')
+    BILLING_ADDRESS_SAVE_BTN = (By.XPATH, '//button[contains(text(), "SAVE ADDRESS")]')
+    STREET_ERROR = (By.CSS_SELECTOR, '#Street-error')
+    HOUSE_NUMBER_ERROR = (By.CSS_SELECTOR, '#Number-error')
+    POST_CODE_ERROR = (By.CSS_SELECTOR, '#ZipCode-error')
+    CITY_ERROR = (By.CSS_SELECTOR, '#City-error')
+    # ADDRESS BOOK PAGE
+    ADDRESS_BOOK_STREET = (By.CSS_SELECTOR, '.col-sm-12:nth-child(1)>p:nth-child(3)')
+    ADDRESS_BOOK_CITY = (By.CSS_SELECTOR, '.col-sm-12:nth-child(1)>p:nth-child(4)')
+    ADD_ADDRESS_BTN = (By.XPATH, '//*[.="Add address"]')
+    EDIT_ADDRESS_LINK = (By.CSS_SELECTOR, '.edit')
+    DELETE_ADDRESS_BTN = (By.CSS_SELECTOR, '.delete')
+    DELETE_ADDRESS_OK_BUTTON = (By.CSS_SELECTOR, '.modal__ok')
+    NO_ADDRESS_MSG = (By.CSS_SELECTOR, '.myecco-address-book__addresses p')
 
 
 class ProductPageLocators:
