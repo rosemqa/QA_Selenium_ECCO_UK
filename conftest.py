@@ -1,5 +1,4 @@
 import time
-
 import pytest
 from faker import Faker
 from selenium import webdriver
@@ -7,6 +6,7 @@ from constants import URL, AuthData
 from locators import AccountPageLocators
 from pages.account_page import AccountPage
 from pages.login_page import LoginPage
+from pages.product_page import ProductPage
 
 
 @pytest.fixture()
@@ -59,3 +59,13 @@ def delete_billing_address(driver):
     page.open_page()
     page.click_delete_address_button()
     page.confirm_address_deletion()
+
+
+@pytest.fixture()
+def add_product_to_basket(driver):
+    """Add product to the basket from PDP and go to the basket"""
+    page = ProductPage(driver, URL.PRODUCT_PAGE)
+    page.open_page()
+    page.select_available_size()
+    page.click_add_to_basket_button()
+    page.click_go_to_basket_button()

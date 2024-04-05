@@ -34,8 +34,9 @@ def test_add_product_to_mini_cart(driver):
         'Total in the mini cart and product price are different'
 
 
-@allure.description('Test that product count and Total in the mini basket is calculated correctly for two products')
-def test_add_two_products_to_mini_cart(driver):
+@allure.description('Test that product count and Total in the mini basket and basket icon count is calculated correctly'
+                    ' for two products')
+def test_add_two_products_to_mini_cart(driver, check):
     page = ProductPage(driver, URL.PRODUCT_PAGE)
     page.open_page()
     page.select_available_size()
@@ -48,10 +49,17 @@ def test_add_two_products_to_mini_cart(driver):
     product_count_in_mini_basket = page.get_mini_basket_product_count_value()
     mini_basket_total = page.get_mini_basket_total_value()
 
-    assert product_count_in_mini_basket == 2, \
-        'Product count in the mini basket is not 2'
-    assert mini_basket_total == mini_cart_product_price * 2, \
-        'Mini basket Total is not equal to the sum of the prices'
+    with check:
+        assert product_count_in_mini_basket == 2, \
+            'Product count in the mini basket is not 2'
+    with check:
+        assert mini_basket_total == mini_cart_product_price * 2, \
+            'Mini basket Total is not equal to the sum of the prices'
+    with check:
+        page.assert_basket_icon_count_present()
+    with check:
+        assert page.get_basket_icon_count_value() == 2, \
+            'Basket count value is not equal to 2 after adding two products to basket'
 
 
 @allure.description('Test the Size Guide link opens the size guide modal, Add Size button is present in the modal')

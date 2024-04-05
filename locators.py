@@ -161,3 +161,22 @@ class PLPLocators:
     PRODUCT_TITLE = (By.CSS_SELECTOR, '.meta__title')
     ADD_TO_FAVORITE_ICON = (By.CSS_SELECTOR, '#favorite-fill')
     BACK_TO_TOP_BTN = (By.CSS_SELECTOR, '.scroll-to-top')
+
+
+class BasketPageLocators:
+    PRODUCT_NAME = (By.CSS_SELECTOR, '.product_name')
+    PRODUCT_COLOR = (By.CSS_SELECTOR, '.product_color')
+    PRODUCT_PRICE = (By.CSS_SELECTOR, 'p.price')
+    LOWER_CHECKOUT_BTN = (By.CSS_SELECTOR, '.checkoutsf_nav--bottom .ecco_button--check-out')
+    VOUCHER_CODE_FIELD = (By.CSS_SELECTOR, '.checkoutsf_basket_voucher__apply__body input')
+    REDEEM_CODE = (By.CSS_SELECTOR, '.checkoutsf_basket_voucher__apply__body .ecco_button')
+    DELETE_BTN = (By.CSS_SELECTOR, '.delete_btn')
+    CLICK_AND_COLLECT_RADIO_BTN = (By.XPATH, '//*[.="Click & Collect"]')
+    TOTAL_PRICE = (By.CSS_SELECTOR, '.checkoutsf_totalprices__price:nth-child(6) span')
+    CHOOSE_STORE_BTN = (By.CSS_SELECTOR, '.my-store button')
+    SELECT_STORE_BTN = (By.CSS_SELECTOR, '.selectStoreButton')
+    STORE_NAME = (By.CSS_SELECTOR, '.my-pickup-store h4')
+    STORE_LOCATOR_STORE_NAME = (By.CSS_SELECTOR, '.store-locator__stores-list h5')
+    VOUCHER_CODE_ERROR = (By.CSS_SELECTOR, '.checkoutsf_basket_voucher__error')
+    EMPTY_BASKET_MSG = (By.CSS_SELECTOR, '.checkoutsf_basket__basket-message h2')
+    CONTINUE_SHOPPING_BTN = (By.CSS_SELECTOR, '.checkoutsf_basket__basket-message a')

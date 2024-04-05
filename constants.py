@@ -10,6 +10,7 @@ class URL:
     EDIT_BILLING_ADDRESS_PAGE = \
         'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/AddressBook/Address?type=BillingAddress'
     BILLING_ADDRESS_BOOK_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/AddressBook?type=BillingAddress'
+    BASKET_PAGE = 'https://gb.ecco.com/en-GB/Basket'
 
 
 class AuthData:
@@ -57,3 +58,11 @@ class AccountAlerts:
     MY_FAVOURITES_TITLE_TEXT = 'My Favourites'
     GUEST_FAVOURITES_TITLE_TEXT = 'Guest Favourites'
     SEE_MY_FAVOURITES_TITLE_TEXT = 'See My Favourites'
+
+
+class Basket:
+    EMPTY_BASKET_MSG = 'Your basket is empty'
+    EMPTY_VOUCHER_CODE_MSG = 'Please enter a promotion code.'
+    NOT_VALID_VOUCHER_CODE_MSG = 'The voucher code you have entered is not valid for your purchase or does not exist.'
+    CHOOSE_STORE_BTN_TEXT = 'Choose store'
+    CHANGE_STORE_BTN_TEXT = 'Change store'

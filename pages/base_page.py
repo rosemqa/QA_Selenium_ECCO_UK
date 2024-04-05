@@ -116,3 +116,15 @@ class BasePage:
         assert self.is_not_element_present(BasePageLocators.FAVOURITES_ICON_COUNT, timeout=1), \
             'Favourites icon count is present after removing a product from Favourites'
         print('Favourites icon count is missing')
+
+    @allure.step('Assert the basket icon count appears when adding a product to basket')
+    def assert_basket_icon_count_present(self):
+        assert self.is_element_present(BasePageLocators.BASKET_ICON_COUNT), \
+            'Basket icon count is missing'
+        print('Basket icon count is present')
+
+    @allure.step('Assert basket icon count disappears after removing a product from basket')
+    def assert_basket_icon_count_is_missing(self):
+        assert self.is_not_element_present(BasePageLocators.BASKET_ICON_COUNT, timeout=1), \
+            'Basket icon count is present after removing a product from the basket'
+        print('Basket icon count is missing')
