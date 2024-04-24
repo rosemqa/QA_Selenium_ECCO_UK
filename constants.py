@@ -11,6 +11,8 @@ class URL:
         'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/AddressBook/Address?type=BillingAddress'
     BILLING_ADDRESS_BOOK_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/AddressBook?type=BillingAddress'
     BASKET_PAGE = 'https://gb.ecco.com/en-GB/Basket'
+    CHECKOUT_DELIVERY_PAGE = 'https://gb.ecco.com/en-GB/Checkout/Delivery'
+    CHECKOUT_SUMMARY_PAGE = 'https://gb.ecco.com/en-GB/Checkout/Summary'
 
 
 class AuthData:
@@ -66,3 +68,14 @@ class Basket:
     NOT_VALID_VOUCHER_CODE_MSG = 'The voucher code you have entered is not valid for your purchase or does not exist.'
     CHOOSE_STORE_BTN_TEXT = 'Choose store'
     CHANGE_STORE_BTN_TEXT = 'Change store'
+
+
+class CheckoutDeliveryAlerts:
+    EMPTY_STREET_ALERT = AccountAlerts.ADDRESS_EMPTY_STREET_ALERT
+    EMPTY_NUMBER_ALERT = AccountAlerts.ADDRESS_EMPTY_NUMBER_ALERT
+    EMPTY_POST_CODE_ALERT = AccountAlerts.ADDRESS_EMPTY_CODE_ALERT
+    EMPTY_CITY_ALERT = AccountAlerts.ADDRESS_EMPTY_CITY_ALERT
+
+
+class CheckoutSummaryAlerts:
+    ACCEPT_CONSENT_ALERT = 'Privacy policy must be accepted'

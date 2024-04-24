@@ -7,6 +7,8 @@ from locators import AccountPageLocators
 from pages.account_page import AccountPage
 from pages.login_page import LoginPage
 from pages.product_page import ProductPage
+from pages.basket_page import BasketPage
+from pages.checkout_delivery_page import CheckoutDeliveryPage
 
 
 @pytest.fixture()
@@ -69,3 +71,18 @@ def add_product_to_basket(driver):
     page.select_available_size()
     page.click_add_to_basket_button()
     page.click_go_to_basket_button()
+
+
+@pytest.fixture()
+def go_to_checkout_delivery(driver, add_product_to_basket):
+    """Add product to the basket from PDP, go to the basket, go to Checkout/Delivery page"""
+    page = BasketPage(driver, driver.current_url)
+    page.click_lower_checkout_button()
+
+
+@pytest.fixture()
+def go_to_checkout_summary(driver, go_to_checkout_delivery):
+    """As a user enter billing address on the Checkout/Delivery page and go to Checkout/Summary page"""
+    page = CheckoutDeliveryPage(driver, driver.current_url)
+    page.enter_billing_address()
+    page.click_go_to_summary_button()

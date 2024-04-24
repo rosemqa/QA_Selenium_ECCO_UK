@@ -180,3 +180,37 @@ class BasketPageLocators:
     VOUCHER_CODE_ERROR = (By.CSS_SELECTOR, '.checkoutsf_basket_voucher__error')
     EMPTY_BASKET_MSG = (By.CSS_SELECTOR, '.checkoutsf_basket__basket-message h2')
     CONTINUE_SHOPPING_BTN = (By.CSS_SELECTOR, '.checkoutsf_basket__basket-message a')
+
+
+class CheckoutDeliveryPageLocators:
+    BILLING_ADDRESS_FIRST_NAME_FIELD = (By.CSS_SELECTOR, '#BillingAddress_FirstName')
+    BILLING_ADDRESS_LAST_NAME_FIELD = (By.CSS_SELECTOR, '#BillingAddress_LastName')
+    BILLING_ADDRESS_STREET_FIELD = (By.CSS_SELECTOR, '#BillingAddress_Street')
+    BILLING_ADDRESS_NUMBER_FIELD = (By.CSS_SELECTOR, '#BillingAddress_StreetNumber')
+    BILLING_ADDRESS_POST_CODE_FIELD = (By.CSS_SELECTOR, '#BillingAddress_ZipCode')
+    BILLING_ADDRESS_CITY_FIELD = (By.CSS_SELECTOR, '#BillingAddress_City')
+    PHONE_NUMBER_FIELD = (By.CSS_SELECTOR, '#PersonalInfo_PhoneNumber')
+    GO_TO_SUMMARY_BTN = (By.CSS_SELECTOR, '.ecco_button--check-out')
+    GO_TO_BASKET_LINK = (By.CSS_SELECTOR, '.checkoutsf_delivery-page__other-delivery-option a')
+    BILLING_STREET_ERROR = (By.CSS_SELECTOR, '#BillingAddress_Street-error')
+    BILLING_NUMBER_ERROR = (By.CSS_SELECTOR, '#BillingAddress_StreetNumber-error')
+    BILLING_POST_CODE_ERROR = (By.CSS_SELECTOR, '#BillingAddress_ZipCode-error')
+    BILLING_CITY_ERROR = (By.CSS_SELECTOR, '#BillingAddress_City-error')
+
+
+class CheckoutSummaryPageLocators:
+    PRODUCT_NAME = BasketPageLocators.PRODUCT_NAME
+    PRODUCT_COLOR = BasketPageLocators.PRODUCT_COLOR
+    PRODUCT_PRICE = BasketPageLocators.PRODUCT_PRICE
+    TOTAL_PRICE = (By.XPATH, '//p[contains(text(), "Total")]//span')
+    CHANGE_ADDRESS_LINK = (By.CSS_SELECTOR, '.checkoutsf_summary__info__link a')
+    GO_TO_PAYMENT_BTN = (By.CSS_SELECTOR, '.small-space .ecco_button--check-out-steps-summary')
+    BILLING_ADDRESS = (By.XPATH, '// *[contains(text(), "Billing")] /../ p[2]')
+    BILLING_POST_CODE = (By.XPATH, '//*[contains(text(), "Billing")]/../p[3]')
+    TERMS_AND_CONDITIONS_LINK = (By.CSS_SELECTOR, '.ecco-checkbox__dialog-link:nth-child(2)')
+    ACCEPT_PRIVACY_POLICY_LINK = (By.CSS_SELECTOR, '.ecco-checkbox__dialog-link:nth-child(4)')
+    CONSENT_MODAL = (By.CSS_SELECTOR, 'section .modal__inner-wrapper')
+    CLOSE_CONSENT_MODAL_ICON = (By.CSS_SELECTOR, 'section .modal__inner-wrapper .modal__close')
+    CONSENT_MODAL_TITLE = (By.CSS_SELECTOR, 'section .modal__inner-wrapper h1')
+    ACCEPT_TERMS_CHECKBOX = (By.CSS_SELECTOR, '.acceptterms-label')
+    ACCEPT_CONSENT_ERROR = (By.CSS_SELECTOR, '#AcceptCheckoutConsent-error')
