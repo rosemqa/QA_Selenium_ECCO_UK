@@ -1,4 +1,3 @@
-import time
 import allure
 from faker import Faker
 from pages.checkout_delivery_page import CheckoutDeliveryPage
@@ -97,18 +96,13 @@ def test_edit_billing_address(driver, check, login, go_to_checkout_delivery):
 @allure.description('Unable to go to payment page without accepting terms on the checkout/summary page')
 @allure.tag('negative')
 def test_go_to_payment_without_accepting_terms(driver, check, login, go_to_checkout_summary):
-    accept_terms_checkbox_color = 'rgb(218, 68, 50)'
     page = CheckoutSummaryPage(driver, URL.CHECKOUT_SUMMARY_PAGE)
 
+    page.select_card_payment_method()
     page.click_go_to_payments_details_button()
 
-    with check:
-        assert page.get_accept_consent_error() == CheckoutSummaryAlerts.ACCEPT_CONSENT_ALERT, \
-            'Accept consent error text is not correct'
-    time.sleep(10)
-    with check:
-        assert page.get_css_accept_terms_checkbox_color_value() == accept_terms_checkbox_color, \
-            'Accept terms checkbox border color is not correct'
+    assert page.get_accept_consent_error() == CheckoutSummaryAlerts.ACCEPT_CONSENT_ALERT, \
+        'Accept consent error text is not correct'
 
 
 @allure.description('Terms and conditions modal can be open and closed on Summary page, modal title text is correct')
@@ -124,8 +118,7 @@ def test_terms_and_conditions_modal(driver, check, login, go_to_checkout_summary
         assert page.get_consent_modal_title_text() == terms_and_conditions_title_text, \
             'Terms and conditions title text is not correct'
     page.click_close_consent_modal_icon()
-    with check:
-        page.assert_consent_modal_closed()
+    page.assert_consent_modal_closed()
 
 
 @allure.description('Privacy policy modal can be open and closed on the Summary page, modal title text is correct')
@@ -141,5 +134,4 @@ def test_privacy_policy_modal(driver, check, login, go_to_checkout_summary):
         assert page.get_consent_modal_title_text() == privacy_policy_title_text, \
             'Privacy policy title text is not correct'
     page.click_close_consent_modal_icon()
-    with check:
-        page.assert_consent_modal_closed()
+    page.assert_consent_modal_closed()

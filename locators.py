@@ -214,3 +214,4 @@ class CheckoutSummaryPageLocators:
     CONSENT_MODAL_TITLE = (By.CSS_SELECTOR, 'section .modal__inner-wrapper h1')
     ACCEPT_TERMS_CHECKBOX = (By.CSS_SELECTOR, '.acceptterms-label')
     ACCEPT_CONSENT_ERROR = (By.CSS_SELECTOR, '#AcceptCheckoutConsent-error')
+    CARD_PAYMENT_METHOD = (By.CSS_SELECTOR, '[data-method="PayCard"]')

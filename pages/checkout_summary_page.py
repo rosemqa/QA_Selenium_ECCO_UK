@@ -63,6 +63,11 @@ class CheckoutSummaryPage(BasePage):
         self.find_elements(CheckoutSummaryPageLocators.CHANGE_ADDRESS_LINK)[0].click()
         print('Click Change billing address link')
 
+    @allure.step('Select the card payment method')
+    def select_card_payment_method(self):
+        self.find_element(CheckoutSummaryPageLocators.CARD_PAYMENT_METHOD).click()
+        print('Select the card payment method')
+
     # ASSERTIONS
     @allure.step('Assert the consent modal opens when clicking on the relevant link')
     def assert_consent_modal_opens(self):
