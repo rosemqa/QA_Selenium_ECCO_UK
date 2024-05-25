@@ -1,7 +1,6 @@
 import time
 import allure
 from selenium.webdriver import ActionChains, Keys
-
 from locators import PLPLocators
 from .base_page import BasePage
 
@@ -78,7 +77,6 @@ class PLP(BasePage):
             .perform()
         print('Set the max price on the price slider')
 
-
     @allure.step('Click Clear All button')
     def click_clear_all_button(self):
         self.find_element(PLPLocators.CLEAR_ALL_BTN).click()
@@ -126,7 +124,7 @@ class PLP(BasePage):
             'Back to Top button is missing'
         print('Back to Top button is present')
 
-    @allure.description('Assert the page scrolls up to the top when clicking the Back to Top button')
+    @allure.step('Assert the page scrolls up to the top when clicking the Back to Top button')
     def assert_page_scrolled_to_top(self):
         page_y_offset = self.driver.execute_script('return window.pageYOffset;')
         assert page_y_offset == 0, \

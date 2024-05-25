@@ -11,6 +11,16 @@ class BasePageLocators:
     BASKET_ICON = (By.CSS_SELECTOR, '#basket_icon')
     BASKET_ICON_COUNT = (By.CSS_SELECTOR, 'span.basket__items-count')
     SEARCH_ICON = (By.CSS_SELECTOR, '.search-icon')
+    RECENTLY_VIEWED_PRODUCT = (
+        By.CSS_SELECTOR,
+        '[data-list-name="Ribbon - Recently viewed products"] .product-item__content'
+    )
+    CCC = (By.XPATH, '(//*[@aria-label="Previous slide"])[3]')
+    # GLOBAL SEARCH
+    SEARCH_FIELD = (By.CSS_SELECTOR, '#global_search')
+    GLOBAL_SEARCH_SHOW_ALL_BTN = (By.CSS_SELECTOR, '#showAllSearchResultsButton')
+    NO_PRODUCTS_MSG = (By.CSS_SELECTOR, 'h3.no_results')
+    CLOSE_SEARCH_ICON = (By.CSS_SELECTOR, '.close-icon')
 
 
 class RegistrationPageLocators:

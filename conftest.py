@@ -1,4 +1,7 @@
 import time
+from datetime import datetime
+
+import allure
 import pytest
 from faker import Faker
 from selenium import webdriver
@@ -17,6 +20,8 @@ def driver():
     print('\nStart Chrome browser')
     driver.maximize_window()
     yield driver
+    attachment = driver.get_screenshot_as_png()
+    allure.attach(attachment, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)
     driver.quit()
     print('\nQuit browser')
 

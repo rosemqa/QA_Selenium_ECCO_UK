@@ -7,6 +7,7 @@ class URL:
     LOGIN_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/Login'
     EDIT_USER_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/Edit'
     MY_FAVOURITES_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/My-Favourites'
+    GUEST_FAVOURITES_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/Guest-Favourites'
     EDIT_BILLING_ADDRESS_PAGE = \
         'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/AddressBook/Address?type=BillingAddress'
     BILLING_ADDRESS_BOOK_PAGE = 'https://gb.ecco.com/en-GB/My-ECCO/My-Personal-Details/AddressBook?type=BillingAddress'
@@ -18,6 +19,11 @@ class URL:
 class AuthData:
     LOGIN_EMAIL = 'fayabob242@fkcod.com'
     LOGIN_PASSWORD = '123qwe!'
+
+
+class Search:
+    SEARCH_FIELD_PLACEHOLDER_TEXT = 'Find what you need'
+    NO_PRODUCTS_FOUND_MESSAGE = 'No products match your selection.'
 
 
 class RegistrationAlerts:
