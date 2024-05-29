@@ -1,3 +1,4 @@
+import random
 import time
 import allure
 from selenium.webdriver import ActionChains, Keys
@@ -116,6 +117,17 @@ class PLP(BasePage):
     def click_back_to_top_button(self):
         self.find_element(PLPLocators.BACK_TO_TOP_BTN).click()
         print('Click Back To Top button')
+
+    @allure.step('Click random product (title) in the product list')
+    def select_product(self):
+        rand = random.randint(0, 10)
+        product_title = self.find_elements(PLPLocators.PRODUCT_TITLE)[rand]
+        product_title_text = product_title.text
+        product_price_value = int(self.find_elements(PLPLocators.PRODUCT_PRICE)[rand].text.split()[1].split('.')[0])
+        product_title.click()
+        print('Click random product title in the product list')
+        return product_title_text, product_price_value
+
 
     # ASSERTIONS
     @allure.step('Assert Back to Top button appears after scrolling down two screen on the page')

@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     LOGO = (By.CSS_SELECTOR, 'a.logo')
+    MEGA_MENU_CATEGORY = (By.CSS_SELECTOR, '.navigation__item')
     ACCEPT_ALL_COOKIES_BTN = (By.CSS_SELECTOR, 'button.coi-banner__accept')
     PROFILE_ICON = (By.CSS_SELECTOR, 'a.commerce-links__profile-icon')
     STORE_FINDER_ICON = (By.CSS_SELECTOR, 'a.commerce-links__storefinder')
@@ -176,6 +177,7 @@ class PLPLocators:
 class BasketPageLocators:
     PRODUCT_NAME = (By.CSS_SELECTOR, '.product_name')
     PRODUCT_COLOR = (By.CSS_SELECTOR, '.product_color')
+    PRODUCT_SIZE = (By.CSS_SELECTOR, '.product_size__variant')
     PRODUCT_PRICE = (By.CSS_SELECTOR, 'p.price')
     LOWER_CHECKOUT_BTN = (By.CSS_SELECTOR, '.checkoutsf_nav--bottom .ecco_button--check-out')
     VOUCHER_CODE_FIELD = (By.CSS_SELECTOR, '.checkoutsf_basket_voucher__apply__body input')
@@ -211,6 +213,7 @@ class CheckoutDeliveryPageLocators:
 class CheckoutSummaryPageLocators:
     PRODUCT_NAME = BasketPageLocators.PRODUCT_NAME
     PRODUCT_COLOR = BasketPageLocators.PRODUCT_COLOR
+    PRODUCT_SIZE = BasketPageLocators.PRODUCT_SIZE
     PRODUCT_PRICE = BasketPageLocators.PRODUCT_PRICE
     TOTAL_PRICE = (By.XPATH, '//p[contains(text(), "Total")]//span')
     CHANGE_ADDRESS_LINK = (By.CSS_SELECTOR, '.checkoutsf_summary__info__link a')
@@ -222,6 +225,6 @@ class CheckoutSummaryPageLocators:
     CONSENT_MODAL = (By.CSS_SELECTOR, 'section .modal__inner-wrapper')
     CLOSE_CONSENT_MODAL_ICON = (By.CSS_SELECTOR, 'section .modal__inner-wrapper .modal__close')
     CONSENT_MODAL_TITLE = (By.CSS_SELECTOR, 'section .modal__inner-wrapper h1')
-    ACCEPT_TERMS_CHECKBOX = (By.CSS_SELECTOR, '.acceptterms-label')
+    ACCEPT_TERMS_CHECKBOX = (By.CSS_SELECTOR, '.terms-condition-text:nth-child(1)')
     ACCEPT_CONSENT_ERROR = (By.CSS_SELECTOR, '#AcceptCheckoutConsent-error')
     CARD_PAYMENT_METHOD = (By.CSS_SELECTOR, '[data-method="PayCard"]')

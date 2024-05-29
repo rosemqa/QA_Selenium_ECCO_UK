@@ -14,6 +14,7 @@ class URL:
     BASKET_PAGE = 'https://gb.ecco.com/en-GB/Basket'
     CHECKOUT_DELIVERY_PAGE = 'https://gb.ecco.com/en-GB/Checkout/Delivery'
     CHECKOUT_SUMMARY_PAGE = 'https://gb.ecco.com/en-GB/Checkout/Summary'
+    CARD_PAYMENT_PAGE = 'https://ecco.altapaysecure.com/eCommerce/API/requestForm'
 
 
 class AuthData:

@@ -11,6 +11,9 @@ class CheckoutSummaryPage(BasePage):
     def get_product_color_text(self):
         return self.find_element(CheckoutSummaryPageLocators.PRODUCT_COLOR).text
 
+    def get_product_size_text(self):
+        return self.find_element(CheckoutSummaryPageLocators.PRODUCT_SIZE).text
+
     def get_product_price_value(self):
         return int(self.find_element(CheckoutSummaryPageLocators.PRODUCT_PRICE).text.split()[1].split('.')[0])
 
@@ -62,6 +65,11 @@ class CheckoutSummaryPage(BasePage):
     def click_change_billing_address_link(self):
         self.find_elements(CheckoutSummaryPageLocators.CHANGE_ADDRESS_LINK)[0].click()
         print('Click Change billing address link')
+
+    @allure.step('Select the accept terms checkbox')
+    def select_accept_terms_checkbox(self):
+        self.find_element(CheckoutSummaryPageLocators.ACCEPT_TERMS_CHECKBOX).click()
+        print('Select the accept terms checkbox')
 
     @allure.step('Select the card payment method')
     def select_card_payment_method(self):

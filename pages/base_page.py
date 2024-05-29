@@ -1,5 +1,6 @@
 import time
 import allure
+import random
 from selenium.common import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
@@ -18,14 +19,15 @@ class BasePage:
             if self.is_element_present(BasePageLocators.ACCEPT_ALL_COOKIES_BTN, timeout=1):
                 self.accept_all_cookies()
 
-    def is_open(self, timeout=5):
+    def is_open(self, timeout=1):
+        time.sleep(timeout)
         with allure.step(f"Page {self.url} is open"):
             assert self.get_current_url() == self.url, \
                 f'Expected url {self.url} is not open, actual url {self.get_current_url()}'
         # try:
         #     WebDriverWait(self.driver, timeout).until(EC.url_to_be(self.url))
         # except TimeoutException:
-        #     return False, 'Expected page, is not open'
+        #     return False
         # return True
 
     def find_element(self, locator, timeout=10):
@@ -57,8 +59,8 @@ class BasePage:
             return False
         return True
 
-    def get_current_url(self):
-        time.sleep(1)
+    def get_current_url(self, timeout=1):
+        time.sleep(timeout)
         return self.driver.current_url
 
     def move_to_element(self, locator):
@@ -105,6 +107,11 @@ class BasePage:
     def click_logo(self):
         self.find_element(BasePageLocators.LOGO).click()
         print('Click Logo')
+
+    @allure.step('Click random category in the navigation mega menu (except "Bags" and "Explore")')
+    def select_random_mega_menu_category(self):
+        self.find_elements(BasePageLocators.MEGA_MENU_CATEGORY)[random.randint(0, 6)].click()
+        print('Click random category in the navigation mega menu')
 
     @allure.step('Accept cookies')
     def accept_all_cookies(self):

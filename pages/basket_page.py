@@ -11,6 +11,9 @@ class BasketPage(BasePage):
     def get_product_color_text(self):
         return self.find_element(BasketPageLocators.PRODUCT_COLOR).text
 
+    def get_product_size_text(self):
+        return self.find_element(BasketPageLocators.PRODUCT_SIZE).text
+
     def get_product_price_value(self):
         return int(self.find_element(BasketPageLocators.PRODUCT_PRICE).text.split()[1].split('.')[0])
 
