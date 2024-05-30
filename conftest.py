@@ -1,6 +1,5 @@
 import time
 from datetime import datetime
-
 import allure
 import pytest
 from faker import Faker
@@ -14,11 +13,57 @@ from pages.basket_page import BasketPage
 from pages.checkout_delivery_page import CheckoutDeliveryPage
 
 
+def pytest_addoption(parser):
+    parser.addoption(
+        '--browser_name',
+        action='store',
+        default='chrome',
+        help='Choose browser: chrome, firefox or edge'
+    )
+
+
 @pytest.fixture()
-def driver():
-    driver = webdriver.Chrome()
-    print('\nStart Chrome browser')
-    driver.maximize_window()
+def driver(request):
+    browser_name = request.config.getoption('--browser_name')
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--disable-notifications")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument('--headless=new')
+
+    firefox_options = webdriver.FirefoxOptions()
+    firefox_options.add_argument("--disable-notifications")
+    firefox_options.add_argument("--no-sandbox")
+    firefox_options.add_argument("--disable-dev-shm-usage")
+    # firefox_options.add_argument('--width=1920')
+    # firefox_options.add_argument('--height=1080')
+    firefox_options.add_argument('--headless')
+
+    edge_options = webdriver.EdgeOptions()
+    edge_options.add_argument("--disable-notifications")
+    edge_options.add_argument("--no-sandbox")
+    edge_options.add_argument("--disable-dev-shm-usage")
+    edge_options.add_argument('--window-size=1920,1080')
+    # edge_options.add_argument("--start-maximized")
+    # edge_options.add_argument("--window-position=1367,0")
+    edge_options.add_argument('--headless=new')
+
+    if browser_name == 'chrome':
+        driver = webdriver.Chrome(options=chrome_options)
+        print('\nStart Chrome browser')
+        # driver.maximize_window()
+        driver.set_window_size(1920, 1080)
+    elif browser_name == 'firefox':
+        driver = webdriver.Firefox(options=firefox_options)
+        print('\nStart Firefox browser')
+        driver.set_window_size(1920, 1080)
+        # driver.maximize_window()
+    elif browser_name == 'edge':
+        driver = webdriver.Edge(options=edge_options)
+        print('\nStart Edge browser')
+    else:
+        raise pytest.UsageError('--browser_name should be chrome, firefox or edge')
     yield driver
     attachment = driver.get_screenshot_as_png()
     allure.attach(attachment, name=f"Screenshot {datetime.today()}", attachment_type=allure.attachment_type.PNG)

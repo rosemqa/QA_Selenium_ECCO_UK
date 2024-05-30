@@ -64,8 +64,8 @@ class PLP(BasePage):
     def set_min_price(self):
         time.sleep(1)
         min_price_dot = self.find_element(PLPLocators.PRICE_SLIDER_MIN)  # left slider handle
-        ActionChains(self.driver)\
-            .drag_and_drop_by_offset(min_price_dot, 50, 0)\
+        ActionChains(self.driver) \
+            .drag_and_drop_by_offset(min_price_dot, 50, 0) \
             .perform()
         print('Set the min price on the price slider')
 
@@ -73,8 +73,8 @@ class PLP(BasePage):
     def set_max_price(self):
         time.sleep(1)
         max_price_dot = self.find_element(PLPLocators.PRICE_SLIDER_MAX)  # right slider handle
-        ActionChains(self.driver)\
-            .drag_and_drop_by_offset(max_price_dot, -50, 0)\
+        ActionChains(self.driver) \
+            .drag_and_drop_by_offset(max_price_dot, -50, 0) \
             .perform()
         print('Set the max price on the price slider')
 
@@ -107,9 +107,9 @@ class PLP(BasePage):
 
     @allure.step('Scroll down two screen')
     def scroll_down_two_screen(self):
-        ActionChains(self.driver)\
-            .click()\
-            .send_keys(Keys.PAGE_DOWN * 2)\
+        ActionChains(self.driver) \
+            .click() \
+            .send_keys(Keys.PAGE_DOWN * 2) \
             .perform()
         print('Scroll down two screen')
 
@@ -127,7 +127,6 @@ class PLP(BasePage):
         product_title.click()
         print('Click random product title in the product list')
         return product_title_text, product_price_value
-
 
     # ASSERTIONS
     @allure.step('Assert Back to Top button appears after scrolling down two screen on the page')
