@@ -15,7 +15,7 @@ def test_login_with_email(driver):
     page.click_sign_in_button()
 
     account_page = AccountPage(driver, driver.current_url)
-    assert page.get_current_url() == URL.ACCOUNT_PAGE, \
+    assert page.get_current_url(3) == URL.ACCOUNT_PAGE, \
         'Account URL is not correct, probably user is not logged in'
     account_page.assert_greeting_title_is_present()
 
@@ -81,7 +81,7 @@ def test_login_with_unregistered_email(driver):
     page.enter_password(AuthData.LOGIN_PASSWORD)
     page.click_sign_in_button()
 
-    alert_text = page.get_email_alert_text()
+    alert_text = page.get_login_failed_alert_text()
     assert alert_text == LoginAlerts.LOGIN_FAILED, \
         'Failed login alert is not correct'
 

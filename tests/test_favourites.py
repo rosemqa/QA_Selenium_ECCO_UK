@@ -18,7 +18,7 @@ class TestFavourites:
         page.enter_email(AuthData.LOGIN_EMAIL)
         page.enter_password(AuthData.LOGIN_PASSWORD)
         page.click_sign_in_button()
-        time.sleep(1)
+        time.sleep(2)
 
     @pytest.fixture()
     def add_to_favorites(self, driver):

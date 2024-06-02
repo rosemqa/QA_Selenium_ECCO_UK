@@ -18,7 +18,7 @@ class TestAccountPage:
         page.enter_email(AuthData.LOGIN_EMAIL)
         page.enter_password(AuthData.LOGIN_PASSWORD)
         page.click_sign_in_button()
-        time.sleep(1)
+        time.sleep(2)
 
     @allure.description('Test if the user can log out')
     def test_sigh_out(self, driver):
@@ -100,7 +100,7 @@ class TestAccountPage:
             'Picker year value is not cleared'
 
     @allure.description('Test if user data can be saved on the Edit page')
-    def test_save_user_data(self, driver):
+    def test_save_user_data(self, driver, check):
         fake = Faker('en_GB')
         first_name = fake.first_name_male()
         last_name = fake.last_name_male()
@@ -127,19 +127,24 @@ class TestAccountPage:
 
         page.click_save_user_details_button()
         page.refresh_page()
-
-        assert page.get_first_name_text() == first_name, \
-            'First name is not saved on the edit page'
-        assert page.get_last_name_text() == last_name, \
-            'Last name is not saved on the edit page'
-        assert page.get_phone_number_value() == phone_number, \
-            'Phone number is not saved on the edit page'
-        assert page.get_date_picker_day_value() == selected_day, \
-            'Day is not saved on the edit page'
-        assert page.get_date_picker_month_value() == selected_month, \
-            'Month is not saved on the edit page'
-        assert page.get_date_picker_year_value() == selected_year, \
-            'Year is not saved on the edit page'
+        with check:
+            assert page.get_first_name_text() == first_name, \
+                'First name is not saved on the edit page'
+        with check:
+            assert page.get_last_name_text() == last_name, \
+                'Last name is not saved on the edit page'
+        with check:
+            assert page.get_phone_number_value() == phone_number, \
+                'Phone number is not saved on the edit page'
+        with check:
+            assert page.get_date_picker_day_value() == selected_day, \
+                'Day is not saved on the edit page'
+        with check:
+            assert page.get_date_picker_month_value() == selected_month, \
+                'Month is not saved on the edit page'
+        with check:
+            assert page.get_date_picker_year_value() == selected_year, \
+                'Year is not saved on the edit page'
 
     @allure.description('Test if info message appears/disappears after updating the user info')
     def test_updated_user_info_message(self, driver):

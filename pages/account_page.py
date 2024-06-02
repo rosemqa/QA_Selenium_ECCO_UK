@@ -1,4 +1,6 @@
 import random
+import time
+
 import allure
 from constants import AccountAlerts
 from locators import AccountPageLocators
@@ -263,6 +265,7 @@ class AccountPage(BasePage):
     @allure.step('Click Save user details button')
     def click_save_user_details_button(self):
         self.find_element(AccountPageLocators.SAVE_USER_DETAILS_BTN).click()
+        time.sleep(1)
         print('Click Save user details button')
 
     @allure.step('Click "Delete favourite" button')

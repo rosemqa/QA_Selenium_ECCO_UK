@@ -95,5 +95,5 @@ class TestUserFlow:
         summary_page.select_accept_terms_checkbox()
         summary_page.click_go_to_payments_details_button()
 
-        assert URL.CARD_PAYMENT_PAGE in summary_page.get_current_url(), \
+        assert URL.CARD_PAYMENT_PAGE in summary_page.get_current_url(2), \
             'User is nor redirected to payment page'
