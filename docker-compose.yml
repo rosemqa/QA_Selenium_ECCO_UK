@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  pytest_runner:
-    image: 'python'
-    build: .
-    volumes:
-      - .:/test_project
-    command: /bin/sh -c "ls -la && pytest --browser_name=chrome -sv --alluredir=allure_results"
