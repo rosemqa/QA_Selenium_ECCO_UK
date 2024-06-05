@@ -33,7 +33,6 @@ class PLP(BasePage):
         time.sleep(1)
         elements_list = self.find_elements(PLPLocators.PRODUCT_PRICE)
         price_list = [int(element.text.split()[1].split('.')[0]) for element in elements_list]
-        print(price_list)
         return price_list
 
     def get_min_price_value_in_price_range(self):

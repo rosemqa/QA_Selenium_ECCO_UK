@@ -108,9 +108,9 @@ class BasePage:
         self.find_element(BasePageLocators.LOGO).click()
         print('Click Logo')
 
-    @allure.step('Click random category in the navigation mega menu (except "Bags" and "Explore")')
+    @allure.step('Click random category in the navigation mega menu (except "Sale", "Bags" and "Explore")')
     def select_random_mega_menu_category(self):
-        self.find_elements(BasePageLocators.MEGA_MENU_CATEGORY)[random.randint(0, 6)].click()
+        self.find_elements(BasePageLocators.MEGA_MENU_CATEGORY)[random.randint(0, 5)].click()
         print('Click random category in the navigation mega menu')
 
     @allure.step('Accept cookies')

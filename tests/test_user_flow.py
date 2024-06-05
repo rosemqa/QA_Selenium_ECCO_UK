@@ -1,4 +1,5 @@
 import allure
+import time
 from config.generator import generated_address
 from constants import URL, AuthData
 from pages.account_page import AccountPage
@@ -25,6 +26,7 @@ class TestUserFlow:
         login_page.enter_email(AuthData.LOGIN_EMAIL)
         login_page.enter_password(AuthData.LOGIN_PASSWORD)
         login_page.click_sign_in_button()
+        time.sleep(2)
 
         account_page = AccountPage(driver, URL.ACCOUNT_PAGE)
         account_page.is_open()
