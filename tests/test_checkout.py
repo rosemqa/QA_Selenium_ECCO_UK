@@ -2,7 +2,7 @@ import allure
 from faker import Faker
 from pages.checkout_delivery_page import CheckoutDeliveryPage
 from pages.checkout_summary_page import CheckoutSummaryPage
-from constants import URL, CheckoutDeliveryAlerts, CheckoutSummaryAlerts
+from constants import URL, CheckoutDeliveryAlerts
 
 
 @allure.description('Unable to go from Delivery to Summary page without filling the billing address')
@@ -10,6 +10,7 @@ from constants import URL, CheckoutDeliveryAlerts, CheckoutSummaryAlerts
 def test_go_to_summary_with_empty_address(driver, check, login, go_to_checkout_delivery):
     page = CheckoutDeliveryPage(driver, URL.CHECKOUT_DELIVERY_PAGE)
 
+    page.select_accept_terms_checkbox()
     page.click_go_to_summary_button()
 
     with check:
@@ -35,9 +36,10 @@ def test_add_billing_address(driver, check, login, go_to_checkout_delivery):
     delivery_page.enter_billing_address_number(number)
     delivery_page.enter_billing_address_post_code(post_code)
     delivery_page.enter_billing_address_city(city)
+    delivery_page.select_accept_terms_checkbox()
     delivery_page.click_go_to_summary_button()
 
-    assert delivery_page.get_current_url() == URL.CHECKOUT_SUMMARY_PAGE, \
+    assert delivery_page.get_current_url(2) == URL.CHECKOUT_SUMMARY_PAGE, \
         'Go to Summary button does not lead to checkout/summary page'
 
     summary_page = CheckoutSummaryPage(driver, driver.current_url)
@@ -63,13 +65,15 @@ def test_edit_billing_address(driver, check, login, go_to_checkout_delivery):
     delivery_page = CheckoutDeliveryPage(driver, URL.CHECKOUT_DELIVERY_PAGE)
 
     delivery_page.enter_billing_address()
+    delivery_page.select_accept_terms_checkbox()
     delivery_page.click_go_to_summary_button()
 
-    summary_page = CheckoutSummaryPage(driver, driver.current_url)
+    summary_page = CheckoutSummaryPage(driver, URL.CHECKOUT_SUMMARY_PAGE)
+    summary_page.is_open()
 
     summary_page.click_change_billing_address_link()
 
-    assert summary_page.get_current_url() == URL.CHECKOUT_DELIVERY_PAGE, \
+    assert delivery_page.get_current_url() == URL.CHECKOUT_DELIVERY_PAGE, \
         'Change billing address link does not lead to checkout/delivery page'
 
     delivery_page.clear_billing_address_street()
@@ -93,22 +97,22 @@ def test_edit_billing_address(driver, check, login, go_to_checkout_delivery):
             'Check the post code and city on the checkout/summary page'
 
 
-@allure.description('Unable to go to payment page without accepting terms on the checkout/summary page')
+@allure.description('Unable to go to summary page without accepting terms on the checkout/delivery page')
 @allure.tag('negative')
-def test_go_to_payment_without_accepting_terms(driver, check, login, go_to_checkout_summary):
-    page = CheckoutSummaryPage(driver, URL.CHECKOUT_SUMMARY_PAGE)
+def test_go_to_summary_without_accepting_terms(driver, check, login, go_to_checkout_delivery):
+    page = CheckoutDeliveryPage(driver, URL.CHECKOUT_DELIVERY_PAGE)
 
-    page.select_card_payment_method()
-    page.click_go_to_payments_details_button()
+    page.enter_billing_address()
+    page.click_go_to_summary_button()
 
-    assert page.get_accept_consent_error() == CheckoutSummaryAlerts.ACCEPT_CONSENT_ALERT, \
+    assert page.get_accept_consent_error() == CheckoutDeliveryAlerts.ACCEPT_CONSENT_ALERT, \
         'Accept consent error text is not correct'
 
 
-@allure.description('Terms and conditions modal can be open and closed on Summary page, modal title text is correct')
-def test_terms_and_conditions_modal(driver, check, login, go_to_checkout_summary):
+@allure.description('Terms and conditions modal can be open and closed on Delivery page, modal title text is correct')
+def test_terms_and_conditions_modal(driver, check, login, go_to_checkout_delivery):
     terms_and_conditions_title_text = 'Terms of Use'
-    page = CheckoutSummaryPage(driver, URL.CHECKOUT_SUMMARY_PAGE)
+    page = CheckoutDeliveryPage(driver, URL.CHECKOUT_DELIVERY_PAGE)
 
     page.click_terms_and_conditions_link()
 
@@ -121,10 +125,10 @@ def test_terms_and_conditions_modal(driver, check, login, go_to_checkout_summary
     page.assert_consent_modal_closed()
 
 
-@allure.description('Privacy policy modal can be open and closed on the Summary page, modal title text is correct')
-def test_privacy_policy_modal(driver, check, login, go_to_checkout_summary):
+@allure.description('Privacy policy modal can be open and closed on the Delivery page, modal title text is correct')
+def test_privacy_policy_modal(driver, check, login, go_to_checkout_delivery):
     privacy_policy_title_text = 'Privacy Policy'
-    page = CheckoutSummaryPage(driver, URL.CHECKOUT_SUMMARY_PAGE)
+    page = CheckoutDeliveryPage(driver, URL.CHECKOUT_DELIVERY_PAGE)
 
     page.click_accept_privacy_policy_link()
 

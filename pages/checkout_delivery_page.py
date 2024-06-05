@@ -1,6 +1,5 @@
 import allure
 from faker import Faker
-
 from .base_page import BasePage
 from locators import CheckoutDeliveryPageLocators
 
@@ -18,6 +17,18 @@ class CheckoutDeliveryPage(BasePage):
 
     def get_billing_city_error_text(self):
         return self.find_element(CheckoutDeliveryPageLocators.BILLING_CITY_ERROR).text
+
+    def get_accept_consent_error(self):
+        return self.find_element(CheckoutDeliveryPageLocators.ACCEPT_CONSENT_ERROR).text
+
+    def get_css_accept_terms_checkbox_color_value(self):
+        """Get css value for the border color of accept terms checkbox"""
+        return self.find_element(CheckoutDeliveryPageLocators.ACCEPT_TERMS_CHECKBOX)\
+            .value_of_css_property('border-color')
+
+    def get_consent_modal_title_text(self):
+        """Get the title text in the terms modal"""
+        return self.find_element(CheckoutDeliveryPageLocators.CONSENT_MODAL_TITLE).text
 
     # ACTIONS
     @allure.step('Enter the billing address street')
@@ -45,6 +56,11 @@ class CheckoutDeliveryPage(BasePage):
         self.find_element(CheckoutDeliveryPageLocators.BILLING_ADDRESS_POST_CODE_FIELD).send_keys(post_code)
         print('Enter the billing address post code')
 
+    @allure.step('Select the accept terms checkbox')
+    def select_accept_terms_checkbox(self):
+        self.find_element(CheckoutDeliveryPageLocators.ACCEPT_TERMS_CHECKBOX).click()
+        print('Select the accept terms checkbox')
+
     @allure.step('Click Go To Summary button')
     def click_go_to_summary_button(self):
         self.find_element(CheckoutDeliveryPageLocators.GO_TO_SUMMARY_BTN).click()
@@ -70,6 +86,21 @@ class CheckoutDeliveryPage(BasePage):
         self.find_element(CheckoutDeliveryPageLocators.BILLING_ADDRESS_CITY_FIELD).clear()
         print('Clear the billing address city field')
 
+    @allure.step('Click Terms and Conditions link')
+    def click_terms_and_conditions_link(self):
+        self.find_element(CheckoutDeliveryPageLocators.TERMS_AND_CONDITIONS_LINK).click()
+        print('Click Terms and Conditions link')
+
+    @allure.step('Click Accept Privacy Policy link')
+    def click_accept_privacy_policy_link(self):
+        self.find_element(CheckoutDeliveryPageLocators.ACCEPT_PRIVACY_POLICY_LINK).click()
+        print('Click Accept Privacy Policy link')
+
+    @allure.step('Click Close icon in the Terms and Conditions or Accept Privacy Policy modal')
+    def click_close_consent_modal_icon(self):
+        self.find_element(CheckoutDeliveryPageLocators.CLOSE_CONSENT_MODAL_ICON).click()
+        print('Click Close icon in the Terms and Conditions or Accept Privacy Policy modal')
+
     # METHODS
     @allure.step('Enter the billing address on the checkout/delivery page')
     def enter_billing_address(self):
@@ -82,3 +113,22 @@ class CheckoutDeliveryPage(BasePage):
         self.enter_billing_address_number(number)
         self.enter_billing_address_post_code(post_code)
         self.enter_billing_address_city(city)
+
+    # ASSERTIONS
+    @allure.step('Assert the consent modal opens when clicking on the relevant link')
+    def assert_consent_modal_opens(self):
+        assert self.is_element_present(CheckoutDeliveryPageLocators.CONSENT_MODAL, timeout=3), \
+            'Consent modal is not open'
+        print('Consent modal is open')
+
+    @allure.step('Assert Consent modal can be closed using the Close icon')
+    def assert_consent_modal_closed(self):
+        assert self.is_disappeared(CheckoutDeliveryPageLocators.CONSENT_MODAL), \
+            'Consent modal is not closed'
+        print('Consent modal closed')
+
+    @allure.step('Assert the title is present in the consent modal')
+    def assert_consent_modal_title_is_present(self):
+        assert self.is_element_present(CheckoutDeliveryPageLocators.CONSENT_MODAL_TITLE, timeout=1), \
+            'Consent modal title is missing'
+        print('Consent modal title is present')

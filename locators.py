@@ -208,6 +208,13 @@ class CheckoutDeliveryPageLocators:
     BILLING_NUMBER_ERROR = (By.CSS_SELECTOR, '#BillingAddress_StreetNumber-error')
     BILLING_POST_CODE_ERROR = (By.CSS_SELECTOR, '#BillingAddress_ZipCode-error')
     BILLING_CITY_ERROR = (By.CSS_SELECTOR, '#BillingAddress_City-error')
+    TERMS_AND_CONDITIONS_LINK = (By.CSS_SELECTOR, '.label-input__label--required [type="ConsentContent"]:nth-child(2)')
+    ACCEPT_PRIVACY_POLICY_LINK = (By.CSS_SELECTOR, '.ecco-checkbox__dialog-link:nth-child(4)')
+    CONSENT_MODAL = (By.CSS_SELECTOR, 'section .modal__inner-wrapper')
+    CLOSE_CONSENT_MODAL_ICON = (By.CSS_SELECTOR, 'section .modal__inner-wrapper .modal__close')
+    CONSENT_MODAL_TITLE = (By.CSS_SELECTOR, 'section .modal__inner-wrapper h1')
+    ACCEPT_TERMS_CHECKBOX = (By.CSS_SELECTOR, '.terms-condition-text:nth-child(1)')
+    ACCEPT_CONSENT_ERROR = (By.CSS_SELECTOR, '#AcceptCheckoutConsent-error')
 
 
 class CheckoutSummaryPageLocators:
@@ -220,11 +227,4 @@ class CheckoutSummaryPageLocators:
     GO_TO_PAYMENT_BTN = (By.CSS_SELECTOR, '.small-space .ecco_button--check-out-steps-summary')
     BILLING_ADDRESS = (By.XPATH, '// *[contains(text(), "Billing")] /../ p[2]')
     BILLING_POST_CODE = (By.XPATH, '//*[contains(text(), "Billing")]/../p[3]')
-    TERMS_AND_CONDITIONS_LINK = (By.CSS_SELECTOR, '.ecco-checkbox__dialog-link:nth-child(2)')
-    ACCEPT_PRIVACY_POLICY_LINK = (By.CSS_SELECTOR, '.ecco-checkbox__dialog-link:nth-child(4)')
-    CONSENT_MODAL = (By.CSS_SELECTOR, 'section .modal__inner-wrapper')
-    CLOSE_CONSENT_MODAL_ICON = (By.CSS_SELECTOR, 'section .modal__inner-wrapper .modal__close')
-    CONSENT_MODAL_TITLE = (By.CSS_SELECTOR, 'section .modal__inner-wrapper h1')
-    ACCEPT_TERMS_CHECKBOX = (By.CSS_SELECTOR, '.terms-condition-text:nth-child(1)')
-    ACCEPT_CONSENT_ERROR = (By.CSS_SELECTOR, '#AcceptCheckoutConsent-error')
     CARD_PAYMENT_METHOD = (By.CSS_SELECTOR, '[data-method="PayCard"]')

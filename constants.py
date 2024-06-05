@@ -82,7 +82,4 @@ class CheckoutDeliveryAlerts:
     EMPTY_NUMBER_ALERT = AccountAlerts.ADDRESS_EMPTY_NUMBER_ALERT
     EMPTY_POST_CODE_ALERT = AccountAlerts.ADDRESS_EMPTY_CODE_ALERT
     EMPTY_CITY_ALERT = AccountAlerts.ADDRESS_EMPTY_CITY_ALERT
-
-
-class CheckoutSummaryAlerts:
     ACCEPT_CONSENT_ALERT = 'Privacy policy must be accepted'
