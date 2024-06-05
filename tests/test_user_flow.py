@@ -72,6 +72,7 @@ class TestUserFlow:
         delivery_page.enter_billing_address_number(address.building_number)
         delivery_page.enter_billing_address_post_code(address.post_code)
         delivery_page.enter_billing_address_city(address.city)
+        delivery_page.select_accept_terms_checkbox()
         delivery_page.click_go_to_summary_button()
 
         summary_page = CheckoutSummaryPage(driver, URL.CHECKOUT_SUMMARY_PAGE)
@@ -92,7 +93,6 @@ class TestUserFlow:
         with check:
             assert basket_total_price == summary_total_price, 'Total price in Basket and in Summary is different'
         summary_page.select_card_payment_method()
-        summary_page.select_accept_terms_checkbox()
         summary_page.click_go_to_payments_details_button()
 
         assert URL.CARD_PAYMENT_PAGE in summary_page.get_current_url(2), \
