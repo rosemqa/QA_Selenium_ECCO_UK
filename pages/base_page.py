@@ -190,7 +190,7 @@ class BasePage:
 
     @allure.step('Assert the search field is closed after clicking the close icon')
     def assert_search_field_closed(self):
-        assert self.is_disappeared(BasePageLocators.SEARCH_FIELD), \
+        assert self.is_disappeared(BasePageLocators.SEARCH_FIELD, timeout=2), \
             'Search field is not closed'
         print('Search field is closed')
 

@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   pytest_runner:
-    image: 'python'
+    image: python
     build: .
     volumes:
       - .:/test_project

@@ -86,7 +86,7 @@ class TestBillingAddress:
         page.enter_billing_address_city(city)
         page.click_save_billing_address_button()
 
-        assert page.get_current_url() == URL.BILLING_ADDRESS_BOOK_PAGE, \
+        assert page.get_current_url(2) == URL.BILLING_ADDRESS_BOOK_PAGE, \
             'User is not redirected to Address Book page after saving the new address'
         address_book_street = page.get_address_book_street_text()
         address_book_city = page.get_address_book_city_text()
