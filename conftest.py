@@ -34,7 +34,6 @@ def driver(request):
 
     firefox_options = webdriver.FirefoxOptions()
     firefox_options.add_argument("--disable-notifications")
-    firefox_options.add_argument("--no-sandbox")
     firefox_options.add_argument("--disable-dev-shm-usage")
     # firefox_options.add_argument('--width=1920')
     # firefox_options.add_argument('--height=1080')
@@ -80,7 +79,7 @@ def login(driver):
     page.enter_email(AuthData.LOGIN_EMAIL)
     page.enter_password(AuthData.LOGIN_PASSWORD)
     page.click_sign_in_button()
-    time.sleep(1)
+    time.sleep(2)
 
 
 @pytest.fixture()
@@ -135,4 +134,5 @@ def go_to_checkout_summary(driver, go_to_checkout_delivery):
     """As a user enter billing address on the Checkout/Delivery page and go to Checkout/Summary page"""
     page = CheckoutDeliveryPage(driver, driver.current_url)
     page.enter_billing_address()
+    page.select_accept_terms_checkbox()
     page.click_go_to_summary_button()

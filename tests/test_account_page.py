@@ -21,7 +21,7 @@ class TestAccountPage:
         time.sleep(2)
 
     @allure.description('Test if the user can log out')
-    def test_sigh_out(self, driver):
+    def test_sign_out(self, driver):
         page = AccountPage(driver, URL.ACCOUNT_PAGE)
         page.click_sign_out_button()
 
