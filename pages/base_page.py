@@ -19,16 +19,11 @@ class BasePage:
             if self.is_element_present(BasePageLocators.ACCEPT_ALL_COOKIES_BTN, timeout=1):
                 self.accept_all_cookies()
 
-    def is_open(self, timeout=1):
-        time.sleep(timeout)
+    def is_open(self, timeout=10):
         with allure.step(f"Page {self.url} is open"):
-            assert self.get_current_url() == self.url, \
-                f'Expected url {self.url} is not open, actual url {self.get_current_url()}'
-        # try:
-        #     WebDriverWait(self.driver, timeout).until(EC.url_to_be(self.url))
-        # except TimeoutException:
-        #     return False
-        # return True
+            WebDriverWait(self.driver, timeout)\
+                .until(EC.url_to_be(self.url),
+                       message=f'Expected url {self.url} is not open, actual url {self.driver.current_url}')
 
     def find_element(self, locator, timeout=10):
         return WebDriverWait(self.driver, timeout) \
