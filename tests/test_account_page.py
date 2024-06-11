@@ -1,4 +1,3 @@
-import time
 import allure
 import pytest
 from faker import Faker
@@ -18,7 +17,8 @@ class TestAccountPage:
         page.enter_email(AuthData.LOGIN_EMAIL)
         page.enter_password(AuthData.LOGIN_PASSWORD)
         page.click_sign_in_button()
-        time.sleep(2)
+        account_page = AccountPage(driver, URL.ACCOUNT_PAGE)
+        account_page.is_open()
 
     @allure.description('Test if the user can log out')
     def test_sign_out(self, driver):

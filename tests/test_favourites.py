@@ -1,4 +1,3 @@
-import time
 import allure
 import pytest
 from pages.account_page import AccountPage
@@ -18,7 +17,8 @@ class TestFavourites:
         page.enter_email(AuthData.LOGIN_EMAIL)
         page.enter_password(AuthData.LOGIN_PASSWORD)
         page.click_sign_in_button()
-        time.sleep(2)
+        account_page = AccountPage(driver, URL.ACCOUNT_PAGE)
+        account_page.is_open()
 
     @pytest.fixture()
     def add_to_favorites(self, driver):

@@ -1,4 +1,3 @@
-import time
 from datetime import datetime
 import allure
 import pytest
@@ -79,7 +78,8 @@ def login(driver):
     page.enter_email(AuthData.LOGIN_EMAIL)
     page.enter_password(AuthData.LOGIN_PASSWORD)
     page.click_sign_in_button()
-    time.sleep(2)
+    account_page = AccountPage(driver, URL.ACCOUNT_PAGE)
+    account_page.is_open()
 
 
 @pytest.fixture()
@@ -117,6 +117,7 @@ def add_product_to_basket(driver):
     """Add product to the basket from PDP and go to the basket"""
     page = ProductPage(driver, URL.PRODUCT_PAGE)
     page.open_page()
+    page.is_open()
     page.select_available_size()
     page.click_add_to_basket_button()
     page.click_go_to_basket_button()

@@ -168,6 +168,7 @@ class PLPLocators:
     PRICE_RANGE_MIN = (By.CSS_SELECTOR, '.rangeslider__value--min')
     PRICE_RANGE_MAX = (By.CSS_SELECTOR, '.rangeslider__value--max')
     CLEAR_ALL_BTN = (By.CSS_SELECTOR, '.selected-filter.clear-filters-btn')
+    PRODUCT_ITEM = (By.CSS_SELECTOR, '.product-item__link')
     PRODUCT_PRICE = (By.CSS_SELECTOR, '.meta__price')
     PRODUCT_TITLE = (By.CSS_SELECTOR, '.meta__title')
     ADD_TO_FAVORITE_ICON = (By.CSS_SELECTOR, '#favorite-fill')

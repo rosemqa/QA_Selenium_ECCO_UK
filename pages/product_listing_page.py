@@ -117,13 +117,13 @@ class PLP(BasePage):
         self.find_element(PLPLocators.BACK_TO_TOP_BTN).click()
         print('Click Back To Top button')
 
-    @allure.step('Click random product (title) in the product list')
+    @allure.step('Click random product in the product list')
     def select_product(self):
         rand = random.randint(0, 10)
         product_title = self.find_elements(PLPLocators.PRODUCT_TITLE)[rand]
         product_title_text = product_title.text
         product_price_value = int(self.find_elements(PLPLocators.PRODUCT_PRICE)[rand].text.split()[1].split('.')[0])
-        product_title.click()
+        self.find_element(PLPLocators.PRODUCT_ITEM).click()
         print('Click random product title in the product list')
         return product_title_text, product_price_value
 
