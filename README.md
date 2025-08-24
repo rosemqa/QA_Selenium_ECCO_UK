@@ -15,5 +15,9 @@ The project contains automated tests written in Python utilizing the following t
 - **Docker** — containerization of the testing environment
 - **CI/CD** — automated test runs via GitHub Actions
 
+### Test results
+
+[Allure Report on GitHub Pages](https://rosemqa.github.io/QA_Selenium_ECCO_UK/)
+
 ---
 *This project is intended for learning and practicing automated UI testing.*
