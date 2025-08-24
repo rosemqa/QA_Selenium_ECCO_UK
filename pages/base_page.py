@@ -64,7 +64,7 @@ class BasePage:
         element = self.find_element(locator)
         action.move_to_element(element).perform()
 
-    def sroll_to_element(self, locator):
+    def scroll_to_element(self, locator):
         """Scroll to element"""
         element = self.find_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
